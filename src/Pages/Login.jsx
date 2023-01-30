@@ -1,10 +1,17 @@
 import React, { useRef } from 'react';
 import Navbar from '../Components/Navbar';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import Cookies from 'universal-cookie';
+ 
+
 function Signup() {
 
     const email = useRef();
     const password = useRef();
+    const cookies = new Cookies();
+
+    const navigate = useNavigate();
 
     function handleSubmit(e){
         e.preventDefault();
@@ -15,13 +22,18 @@ function Signup() {
         }
 
 
-        // 
+         
 
-        //  login server code here....
-        
-
-
-        // 
+        axios.post('http://localhost:8081/users/login' , userDetails)
+        .then((res)=>{
+            cookies.set('jwt' , res.data);
+            alert(res.data);
+            // console.log(res)
+            navigate('/');
+        }).catch((err)=>{
+            console.log("error occured");
+            console.log(err);
+        })
     }
 
 

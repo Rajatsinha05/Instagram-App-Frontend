@@ -1,12 +1,15 @@
 import React, { useRef } from 'react';
 import Navbar from '../Components/Navbar';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 function Signup() {
 
     const name = useRef();
     const email = useRef();
     const gender = useRef();
     const password = useRef();
+
+    const navigate = useNavigate();
 
     function handleSubmit(e){
         e.preventDefault();
@@ -20,9 +23,9 @@ function Signup() {
 
         console.log("about to send");
 
-        axios.post('https://http://localhost:8081/users/register' , userDetails)
+        axios.post('http://localhost:8081/users/register' , userDetails)
         .then((res)=>{
-            alert("data sent to backend");
+            navigate('/login');
         }).catch((err)=>{
             console.log("error occured");
             console.log(err);

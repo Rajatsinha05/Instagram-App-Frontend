@@ -1,10 +1,14 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import Cookies from 'universal-cookie';
+ 
+
 function Navbar(props) {
 
-    
+    const cookies = new Cookies();
+    let jwt = cookies.get('jwt');
 
-    let authState = JSON.parse(localStorage.getItem("login"))  || false;
+    let authState = jwt || false;
 
     function handleLogout(){
         localStorage.setItem("login" , false);
