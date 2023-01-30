@@ -47,7 +47,7 @@ function Signup() {
                                 
                                 <select ref={device}>
                                     <option value="Mobile"> Mobile </option>
-                                    <option value="PC"> Female </option>
+                                    <option value="PC"> Pc </option>
                                     <option value="Tablet">Tablet</option>
                                 </select>
 
